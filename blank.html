@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming Soon - Kataria Enterprise</title>
+<link rel="icon" type="image/png" href="assets/kataria-favicon.png">
+<style>
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ff0000 0%, #0000ff 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 500px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 50px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-out;
+}
+
+.logo {
+    width: 140px;
+    margin-bottom: 30px;
+    animation: pulse 2s infinite;
+}
+
+h1 {
+    font-size: 36px;
+    margin: 20px 0;
+    background: linear-gradient(45deg, #0000ff, #ff0000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+p {
+    font-size: 16px;
+    color: #5a6c7d;
+    margin: 20px 0 30px;
+    line-height: 1.6;
+}
+
+.back-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #0000ff, #ff0000);
+    color: white;
+    padding: 14px 30px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.back-btn:hover {
+    background: linear-gradient(45deg, #ff0000, #0000ff);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 40px 20px;
+    }
+    h1 {
+        font-size: 28px;
+    }
+    p {
+        font-size: 14px;
+    }
+}
+</style>
+</head>
+<body>
+<div class="lang-dropdown" style="display: none;">
+    <select onchange="setLanguageDropdown(this.value)">
+        <option value="en">ENGLISH</option>
+        <option value="hi">हिंदी</option>
+        <option value="gu">ગુજરાતી</option>
+    </select>
+</div>
+<div class="container">
+    <img src="assets/logo.png" class="logo" alt="Kataria Logo">
+    <h1 data-en="Coming Soon" data-hi="जल्द आ रहा है" data-gu="જલ્દી આવી રહ્યું છે">Coming Soon</h1>
+    <p data-en="We're working on something exciting. This page will be available soon with amazing content!" data-hi="हम कुछ रोमांचक पर काम कर रहे हैं। यह पेज जल्द ही शानदार सामग्री के साथ उपलब्ध होगा!" data-gu="અમે કેટલીક રોમાંચક બાબત પર કામ કરી રહ્યા છીએ. આ પેજ જલ્દી જ શાનદાર સામગ્રી સાથે ઉપલબ્ધ થશે!">We're working on something exciting. This page will be available soon with amazing content!</p>
+    <a href="index.html" class="back-btn" data-en="← Back to Home" data-hi="← होम पर वापस" data-gu="← હોમ પર પાછા">← Back to Home</a>
+</div>
+<script src="translate.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!-- Navigation Header -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <img src="/assets/logo.png" alt="Kataria Logo" class="nav-logo-img">
+            <!-- <span data-en="KATARIA ENTERPRISE" data-hi="कटारिया एंटरप्राइज" data-gu="કટારિયા એન્ટરપ્રાઇઝ">KATARIA ENTERPRISE</span> -->
+        </div>
+        <div class="nav-menu">
+            <a href="/QR/kedigitalcard/" data-en="Home" data-hi="होम" data-gu="હોમ" class="nav-home">Home</a>
+            <a href="/QR/kedigitalcard/profile/" data-en="About" data-hi="हमारे बारे में" data-gu="અમારા વિશે" class="nav-about">About</a>
+            <a href="/QR/kedigitalcard/infrastructure/" data-en="Infrastructure" data-hi="बुनियादी ढांचा" data-gu="ઇન્ફ્રાસ્ટ્રક્ચર" class="nav-infrastructure">Infrastructure</a>
+            <a href="/QR/kedigitalcard/joinus/" data-en="Careers" data-hi="करियर" data-gu="કારિયર" class="nav-careers">Careers</a>
+            <a href="/QR/kedigitalcard/#contact" data-en="Contact" data-hi="संपर्क" data-gu="સંપર્ક" class="nav-contact">Contact</a>
+        </div>
+        <div class="lang-buttons">
+            <button class="lang-btn active" onclick="setLanguage('en')">ENGLISH</button>
+            <button class="lang-btn" onclick="setLanguage('hi')">हिन्दी</button>
+            <button class="lang-btn" onclick="setLanguage('gu')">ગુજરાતી</button>
+        </div>
+        <div class="mobile-menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </div>
+</nav>
+
+<script>
+// Navbar component initialization
+document.addEventListener('DOMContentLoaded', function() {
+    // Determine current page and adjust paths
+    const currentPath = window.location.pathname;
+    const isSubpage = currentPath.includes('/') && !currentPath.endsWith('/index.html') && !currentPath.endsWith('/') && currentPath !== '/';
+    
+    // Set logo path for all pages
+    const logoImg = document.querySelector('.nav-logo-img');
+    if (logoImg) {
+        logoImg.src = '/assets/logo.png';
+    }
+    
+    // Mobile menu toggle functionality
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+    }
+    
+    // Navbar scroll effect with auto hide/show
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            const currentScroll = window.scrollY;
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                // Scrolling down
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling up
+                navbar.style.transform = 'translateY(0)';
+            }
+            
+            // Background effect
+            if (currentScroll > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 5px rgba(0,0,0,0.05)';
+            }
+            
+            lastScroll = currentScroll;
+        }
+    });
+});
+</script>
